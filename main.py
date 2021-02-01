@@ -32,11 +32,9 @@ for item in items:
     tracktotal = tracks.get('total')
 
     if tracktotal > 100:
-        offset = 100
-        write_playlist_tracks(tracks) #writes the first 100
-        tracktotal -= 100
+        offset = 0
         while tracktotal > 0:
-            tracks = sp.playlist_tracks(playlist_id, offset=offset) #writes the next 100
+            tracks = sp.playlist_tracks(playlist_id, offset=offset)
             write_playlist_tracks(tracks)
             tracktotal -= 100
             offset += 100
